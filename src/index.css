@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 215 49% 93%;
+  --foreground: 0 0% 0%;
+
+  --muted-background: 215 27% 82%;
+  --muted-foreground: 0 0% 85%;
+}
+
+.animate-progress {
+  animation-name: progress;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
