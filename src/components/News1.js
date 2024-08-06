@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -8,16 +7,7 @@ const News1 = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get(
-          "https://newsapi.org/v2/top-headlines",
-          {
-            params: {
-              country: "in",
-              category: "health",
-              apiKey: "a4496b4273874f91b2477521f30d005c",
-            },
-          }
-        );
+        const response = await axios.get("https://proxy-dp4q.onrender.com/news");
         setArticles(response.data.articles);
       } catch (error) {
         console.error("Error fetching news:", error);
