@@ -9,16 +9,7 @@ const Home = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get(
-          "https://newsapi.org/v2/top-headlines",
-          {
-            params: {
-              country: "in",
-              category: "health",
-              apiKey: "a90d56913ccc436ba23b2360a5794ad7",
-            },
-          }
-        );
+        const response = await axios.get("https://proxy-dp4q.onrender.com/news");
         setArticles(response.data.articles);
       } catch (error) {
         console.error("Error fetching news:", error);
