@@ -9,6 +9,7 @@ const Home = () => {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [serverStarting, setServerStarting] = useState(true); // New state to track server startup
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -19,6 +20,8 @@ const Home = () => {
       } catch (error) {
         console.error("Error fetching news:", error);
         setLoading(false);
+      } finally {
+        setServerStarting(false); // Set serverStarting to false once the request is complete
       }
     };
 
@@ -37,13 +40,26 @@ const Home = () => {
 
   return (
     <div className="space-y-10">
-      {loading ? (
+      {serverStarting ? (
         <div className="flex justify-center items-center h-screen">
           <div className="flex space-x-2">
-            <div className="w-4 h-4 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
-            <div className="w-4 h-4 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-4 h-4 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+            <div
+              className="w-4 h-4 bg-purple-500 rounded-full animate-bounce"
+              style={{ animationDelay: "0s" }}
+            ></div>
+            <div
+              className="w-4 h-4 bg-purple-500 rounded-full animate-bounce"
+              style={{ animationDelay: "0.2s" }}
+            ></div>
+            <div
+              className="w-4 h-4 bg-purple-500 rounded-full animate-bounce"
+              style={{ animationDelay: "0.4s" }}
+            ></div>
           </div>
+        </div>
+      ) : loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <div className="loader">Loading...</div>
         </div>
       ) : (
         <>
